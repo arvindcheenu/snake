@@ -1,0 +1,17 @@
+{
+  "name": "Snake Game",
+  "short_name": "Snake",
+  "description": "Classic Snake game with retro aesthetics and modern features",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#9aab52",
+  "theme_color": "#9aab52",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

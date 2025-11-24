@@ -852,8 +852,8 @@
         let touchStartY = 0;
         function initCanvas() {
             const container = canvas.parentElement;
-            const containerWidth = container.clientWidth - 6; // Account for border
-            const containerHeight = container.clientHeight - 6;
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
             // Calculate ideal tile size
             const baseTileSize = 12; // Target tile size
             const oldGridWidth = GRID_WIDTH;
@@ -907,20 +907,24 @@
         }
         async function startGame() {
             initAudio();
-            stopBackgroundMusic(); // Stop menu music
             document.getElementById('startScreen').classList.add('hidden');
             initGame();
             isPlaying = true;
+            if (musicEnabled && backgroundMusic && backgroundMusic.paused) {
+                startBackgroundMusic();
+            }
             gameLoop = setInterval(update, gameSpeed);
         }
         async function restartGame() {
             initAudio();
-            stopBackgroundMusic(); // Stop menu music
             document.getElementById('gameOverScreen').classList.add('hidden');
             clearInterval(gameLoop);
             initGame();
             isPlaying = true;
             isPaused = false;
+            if (musicEnabled && backgroundMusic && backgroundMusic.paused) {
+                startBackgroundMusic();
+            }
             gameLoop = setInterval(update, gameSpeed);
         }
         function pauseGame() {
@@ -952,6 +956,9 @@
             initGame();
             isPlaying = true;
             isPaused = false;
+            if (musicEnabled && backgroundMusic && backgroundMusic.paused) {
+                startBackgroundMusic();
+            }
             gameLoop = setInterval(update, gameSpeed);
         }
         function goToMenu() {

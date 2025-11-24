@@ -437,16 +437,6 @@
                 <div id="gameOverScreen" class="hidden">
                     <div class="title">GAME OVER</div>
                     <div class="final-score">SCORE <span id="finalScore">0</span></div>
-                    <div class="settings">
-                        <div class="setting-item">
-                            <span class="setting-label">Music</span>
-                            <div class="setting-value">
-                                <span class="setting-arrow" onclick="toggleMusic()">◀</span>
-                                <span class="setting-text" id="musicValueGameOver">ON</span>
-                                <span class="setting-arrow" onclick="toggleMusic()">▶</span>
-                            </div>
-                        </div>
-                    </div>
                     <button class="restart-btn" onclick="restartGame()">RESTART</button>
                     <button class="menu-btn" onclick="goToMenu()">MENU</button>
                 </div>
@@ -715,9 +705,6 @@
             document.getElementById('fruitsValuePause').textContent = fruitsText;
             document.getElementById('musicValue').textContent = musicText;
             document.getElementById('musicValuePause').textContent = musicText;
-            if (document.getElementById('musicValueGameOver')) {
-                document.getElementById('musicValueGameOver').textContent = musicText;
-            }
         }
         // Detect touch device
         const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
@@ -764,7 +751,10 @@
             updateSettingsDisplay();
             
             if (musicEnabled) {
-                startBackgroundMusic();
+                // Only start music if we're on a menu screen (not during gameplay)
+                if (!isPlaying) {
+                    startBackgroundMusic();
+                }
             } else {
                 stopBackgroundMusic();
             }

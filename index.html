@@ -922,7 +922,7 @@
             initGame();
             isPlaying = true;
             isPaused = false;
-            if (musicEnabled && backgroundMusic && backgroundMusic.paused) {
+            if (musicEnabled) {
                 startBackgroundMusic();
             }
             gameLoop = setInterval(update, gameSpeed);
@@ -956,7 +956,7 @@
             initGame();
             isPlaying = true;
             isPaused = false;
-            if (musicEnabled && backgroundMusic && backgroundMusic.paused) {
+            if (musicEnabled) {
                 startBackgroundMusic();
             }
             gameLoop = setInterval(update, gameSpeed);
